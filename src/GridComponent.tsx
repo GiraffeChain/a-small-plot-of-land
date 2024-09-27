@@ -130,7 +130,7 @@ async function fetchGrid(client: g.GiraffeClient): Promise<GridData> {
             console.log(`Missing output ${JSON.stringify(reference)}`);
             return;
         }
-        const vertex = output.value?.graphEntry?.vertex;
+        const vertex = output.graphEntry?.vertex;
         if (!vertex) {
             console.log(`Missing vertex ${JSON.stringify(output)}`);
             return;
@@ -150,16 +150,16 @@ async function fetchGrid(client: g.GiraffeClient): Promise<GridData> {
             return;
         }
         const current = data[y][x];
-        if (!current || current.quantity < output.value!.quantity) {
+        if (!current || current.quantity < output.quantity) {
             const color = vertex.data["color"];
             if (!color) {
                 console.log(`Missing color ${JSON.stringify(vertex.data)}`);
                 return;
             }
-            console.log("Setting cell", x, y, color, output.value!.quantity);
+            console.log("Setting cell", x, y, color, output.quantity);
             data[y][x] = {
                 color: color,
-                quantity: output.value!.quantity
+                quantity: output.quantity
             };
         }
     }
