@@ -73,13 +73,11 @@ const GridComponent = ({ client }: { client: g.GiraffeClient }) => {
             const y = content.row.toString();
             const quantity = content.data ? content.data.quantity + 1 : 1;
             const output = g.TransactionOutput.fromJSON({
-                value: {
-                    quantity: quantity + 1,
-                    graphEntry: {
-                        vertex: {
-                            label: "a-small-plot-of-land",
-                            data: { x, y, color }
-                        }
+                quantity: quantity + 1,
+                graphEntry: {
+                    vertex: {
+                        label: "a-small-plot-of-land",
+                        data: { x, y, color }
                     }
                 }
             });
